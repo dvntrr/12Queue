@@ -1,12 +1,15 @@
+from datetime import datetime
+
 class Pasien:
     def __init__(self, id, nama, usia, keluhan):
         self.id = id
         self.nama = nama
         self.usia = usia
         self.keluhan = keluhan
+        self.waktu = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
     def __str__(self):
-        return f"ID: {self.id} | Nama: {self.nama} | Usia: {self.usia} | Keluhan: {self.keluhan}"
+        return f"ID: {self.id:03d} | Nama: {self.nama} | Usia: {self.usia} | Keluhan: {self.keluhan} | Waktu: {self.waktu}"
 
 
 class SistemAntreanGigi:
@@ -24,10 +27,14 @@ class SistemAntreanGigi:
         self.id_berikutnya = 1
 
     def pilih_keluhan(self):
-        print("\nPilih Keluhan:")
+        print("\n" + "=" * 40)
+        print(" PILIH KELUHAN PASIEN ")
+        print("=" * 40)
 
         for i, keluhan in enumerate(self.KELUHAN, start=1):
             print(f"{i}. {keluhan}")
+
+        print("=" * 40)
 
         while True:
             try:
@@ -50,14 +57,21 @@ class SistemAntreanGigi:
         self.id_berikutnya += 1
 
     def lihat_antrean(self):
-        if not self.antrean:
-            print("\nAntrean kosong.")
-            return
-
-        print("\n===== ANTREAN SAAT INI =====")
+        print("\n" + "=" * 90)
+        print(f"{'No':<5}{'ID':<5}{'Nama':<20}{'Usia':<10}{'Keluhan':<25}{'Waktu'}")
+        print("=" * 90)
 
         for posisi, pasien in enumerate(self.antrean, start=1):
-            print(f"{posisi}. {pasien}")
+            print(
+                f"{posisi:<5}"
+                f"{pasien.id:<5}"
+                f"{pasien.nama:<20}"
+                f"{pasien.usia:<10}"
+                f"{pasien.keluhan:<25}"
+                f"{pasien.waktu}"
+            )
+
+        print("=" * 90)
 
     def layani_pasien(self):
         if not self.antrean:

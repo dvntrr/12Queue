@@ -4,17 +4,24 @@ def main():
     sistem = SistemAntreanGigi()
 
     while True:
-        print("\n===== SISTEM ANTREAN KLINIK GIGI =====")
+        print("\n" + "=" * 40)
+        print(" SISTEM ANTREAN KLINIK GIGI ")
+        print("=" * 40)
         print("1. Tambah Pasien")
         print("2. Lihat Antrean")
         print("3. Layani Pasien")
         print("4. Cari Pasien")
         print("5. Hitung Pasien")
         print("6. Keluar")
+        print("=" * 40)
 
         pilihan = input("Pilih menu: ")
 
         if pilihan == "1":
+            print("\n" + "=" * 40)
+            print(" TAMBAH PASIEN BARU ")
+            print("=" * 40)
+
             nama = input("Nama Pasien: ")
 
             try:
@@ -26,7 +33,7 @@ def main():
             keluhan = sistem.pilih_keluhan()
 
             sistem.tambah_pasien(nama, usia, keluhan)
-            print("Pasien berhasil ditambahkan!")
+            print("pasien")
 
         elif pilihan == "2":
             sistem.lihat_antrean()
